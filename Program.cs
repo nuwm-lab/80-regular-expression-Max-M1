@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
-namespace LabWork
+class Program
 {
-    // Даний проект є шаблоном для виконання лабораторних робіт
-    // з курсу "Об'єктно-орієнтоване програмування та патерни проектування"
-    // Необхідно змінювати і дописувати код лише в цьому проекті
-    // Відео-інструкції щодо роботи з github можна переглянути 
-    // за посиланням https://www.youtube.com/@ViktorZhukovskyy/videos 
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        string text = "This is a sample text with A1B2C3 and word123 but not just4Word or 789.";
+
+        string pattern = @"\b\w*\d\w*\b";
+
+        MatchCollection matches = Regex.Matches(text, pattern);
+
+        Console.WriteLine("Слова, що мiстять хоча б одну цифру:");
+        foreach (Match match in matches)
         {
-            
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(match.Value);
         }
     }
 }
